@@ -1,0 +1,10 @@
+{
+  "themes": [
+    {
+      "name": "smeup",
+      "types": [
+        "login"
+      ]
+    }
+  ]
+}
