@@ -358,6 +358,24 @@ body#keycloak-bg .pf-v5-c-login {
   border-radius: var(--quickstart-border-radius);
 }
 
+/* ============================================================
+   Nascondi form credenziali — mostra solo bottoni IDP
+   ============================================================ */
+#kc-form-login,
+#kc-select-try-another-way-form,
+#kc-registration,
+#kc-registration-container {
+  display: none !important;
+}
+
+.pf-v5-c-login__main-footer-band {
+  display: none !important;
+}
+
+#kc-social-providers {
+  margin-top: 24px;
+}
+
 .kcInputGroup .pf-v5-c-button.pf-m-control {
   --pf-v5-c-button--m-control--BorderRadius: 0;
   --pf-v5-c-button--BorderRadius: 0;
