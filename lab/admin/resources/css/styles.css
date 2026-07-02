@@ -14,6 +14,20 @@
   filter: brightness(0.9);
 }
 
+/* Pulsanti con menu a tendina (split button) */
+.pf-v5-c-menu-toggle.pf-m-primary {
+  --pf-v5-c-menu-toggle--m-primary--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--m-primary--hover--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--m-primary--focus--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--m-primary--active--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--BorderRadius: var(--quickstart-border-radius);
+}
+
+.pf-v5-c-menu-toggle.pf-m-primary:not(:disabled):hover,
+.pf-v5-c-menu-toggle.pf-m-primary:not(:disabled):focus {
+  filter: brightness(0.9);
+}
+
 .pf-v5-c-button.pf-m-secondary {
   --pf-v5-c-button--m-secondary--Color: var(--quickstart-primary-color);
   --pf-v5-c-button--m-secondary--after--BorderColor: var(--quickstart-primary-color);
