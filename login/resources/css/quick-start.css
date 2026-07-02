@@ -1,9 +1,9 @@
 :root {
-  --quickstart-primary-color-light: #2aa6b8;
-  --quickstart-primary-color-dark: #2aa6b8;
+  --quickstart-primary-color-light: #a61930;
+  --quickstart-primary-color-dark: #a61930;
   --quickstart-primary-color: var(--quickstart-primary-color-light);
-  --quickstart-secondary-color-light: #fff;
-  --quickstart-secondary-color-dark: #06b6d4;
+  --quickstart-secondary-color-light: #7C1324;
+  --quickstart-secondary-color-dark: #7C1324;
   --quickstart-secondary-color: var(--quickstart-secondary-color-light);
   --quickstart-font-family: 'Inter', sans-serif;
   --quickstart-heading-font-family: 'Inter', sans-serif;
@@ -18,7 +18,12 @@
   --quickstart-bg-color-light: transparent;
   --quickstart-bg-color-dark: transparent;
   --quickstart-bg-color: var(--quickstart-bg-color-light);
-  --quickstart-bg-image: var(--uploaded-bg-background);
+  --quickstart-bg-image: url('../img/backgrounds/background.png');
+  --pf-v5-c-login--BackgroundColor: var(--quickstart-bg-color);
+  --pf-v5-c-login--BackgroundImage: var(--quickstart-bg-image);
+  --pf-v5-c-login--BackgroundPosition: center;
+  --pf-v5-c-login--BackgroundSize: cover;
+  --pf-v5-c-login--before--BackgroundColor: transparent;
   --quickstart-border-radius: 0px;
   --quickstart-card-shadow: none;
 }

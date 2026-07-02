@@ -1,0 +1,18 @@
+:root {
+  --quickstart-primary-color-light: #a61930;
+  --quickstart-primary-color-dark: #a61930;
+  --quickstart-primary-color: var(--quickstart-primary-color-light);
+
+  --quickstart-secondary-color-light: #7C1324;
+  --quickstart-secondary-color-dark: #7C1324;
+  --quickstart-secondary-color: var(--quickstart-secondary-color-light);
+
+  --quickstart-border-radius: 0px;
+  --quickstart-card-shadow: none;
+}
+
+html.pf-v5-theme-dark,
+html.kcDarkModeClass {
+  --quickstart-primary-color: var(--quickstart-primary-color-dark);
+  --quickstart-secondary-color: var(--quickstart-secondary-color-dark);
+}

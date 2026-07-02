@@ -9,6 +9,15 @@
   --smeup-logo-width: 300px;
 }
 
+body#keycloak-bg,
+body#keycloak-bg .pf-v5-c-login {
+  background-color: var(--quickstart-bg-color);
+  background-image: url('../img/backgrounds/background.png') !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* ============================================================
    Bottoni — PF5 theming tramite CSS variables (API ufficiale)
    Il colore viene da --quickstart-primary-color in quick-start.css
@@ -128,7 +137,7 @@ input[type="checkbox"] {
 
 @media (min-width: 768px) {
   .pf-v5-c-login__main-header {
-    grid-template-columns: 70% 30%;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 }
 
@@ -547,4 +556,72 @@ html:not(#\9) {
 
 body {
   font-family: 'IBMPlexSans Regular', sans-serif;
+}
+
+/* ============================================================
+   Responsive alignment (logo + boxes) - no motion effects
+   ============================================================ */
+.pf-v5-c-login {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.pf-v5-c-login__container {
+  width: min(34rem, 100%);
+  margin-inline: auto;
+}
+
+.pf-v5-c-login__header,
+.pf-v5-c-login__main,
+.pf-v5-c-login__main-body {
+  width: 100%;
+}
+
+#kc-header-wrapper,
+.pf-v5-c-login__header {
+  text-align: center;
+}
+
+#kc-header-wrapper::before {
+  width: clamp(220px, 62vw, 300px);
+  height: clamp(52px, 13vw, 63px);
+}
+
+#kc-social-providers ul,
+#kc-social-providers li,
+#kc-social-providers a {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .pf-v5-c-login {
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  .pf-v5-c-login__container {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, 32rem);
+  }
+
+  .pf-v5-c-login__main {
+    margin: 0;
+  }
+
+  .pf-v5-c-login__main-body {
+    padding-inline: 1.25rem;
+  }
+
+  #kc-social-providers {
+    width: 100%;
+  }
+
+  #kc-page-title {
+    font-size: clamp(1.85rem, 7vw, 2.35rem);
+    line-height: 1.15;
+  }
 }
