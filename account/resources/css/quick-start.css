@@ -1,14 +1,14 @@
 :root {
-  --quickstart-primary-color-light: #a61930;
-  --quickstart-primary-color-dark: #a61930;
+  --quickstart-primary-color-light: #1f4a9d;
+  --quickstart-primary-color-dark: #1f4a9d;
   --quickstart-primary-color: var(--quickstart-primary-color-light);
 
-  --quickstart-secondary-color-light: #7C1324;
-  --quickstart-secondary-color-dark: #7C1324;
+  --quickstart-secondary-color-light: #193f88;
+  --quickstart-secondary-color-dark: #193f88;
   --quickstart-secondary-color: var(--quickstart-secondary-color-light);
 
-  --quickstart-border-radius: 0px;
-  --quickstart-card-shadow: none;
+  --quickstart-border-radius: 6px;
+  --quickstart-card-shadow: 0px 3px 6px 0 rgb(0 0 0 / 30%);
 }
 
 html.pf-v5-theme-dark,

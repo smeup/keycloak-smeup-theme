@@ -1,36 +1,31 @@
 :root {
-  --quickstart-primary-color-light: #a61930;
-  --quickstart-primary-color-dark: #a61930;
+  --quickstart-primary-color-light: #9d1f1f;
+  --quickstart-primary-color-dark: #9d1f1f;
   --quickstart-primary-color: var(--quickstart-primary-color-light);
-  --quickstart-secondary-color-light: #7C1324;
-  --quickstart-secondary-color-dark: #7C1324;
+  --quickstart-secondary-color-light: #193f88;
+  --quickstart-secondary-color-dark: #193f88;
   --quickstart-secondary-color: var(--quickstart-secondary-color-light);
-  --quickstart-font-family: 'Inter', sans-serif;
-  --quickstart-heading-font-family: 'Inter', sans-serif;
+  --quickstart-font-family: "IBM Plex Sans", sans-serif;
+  --quickstart-heading-font-family: "IBM Plex Sans", sans-serif;
   --quickstart-logo-url: var(--keycloak-logo-url);
   --quickstart-bg-logo-url: var(--keycloak-bg-logo-url);
   --quickstart-logo-height: var(--keycloak-logo-height);
   --quickstart-logo-width: var(--keycloak-logo-width);
-  --quickstart-text-primary-light: var(--pf-v5-global--Color--dark-100, #151515);
-  --quickstart-text-primary-dark: var(--pf-v5-global--Color--light-100, #f0f0f0);
-  --quickstart-text-secondary-light: var(--pf-v5-global--Color--dark-200, #4f5255);
-  --quickstart-text-secondary-dark: var(--pf-v5-global--Color--light-200, #d2d2d2);
-  --quickstart-bg-color-light: transparent;
-  --quickstart-bg-color-dark: transparent;
+  --quickstart-text-primary-light: #262626;
+  --quickstart-text-primary-dark: #f0f0f0;
+  --quickstart-text-secondary-light: #525252;
+  --quickstart-text-secondary-dark: #d2d2d2;
+  --quickstart-bg-color-light: #f4f4f4;
+  --quickstart-bg-color-dark: #262626;
   --quickstart-bg-color: var(--quickstart-bg-color-light);
-  --quickstart-bg-image: url('../img/backgrounds/background.png');
+  --quickstart-bg-image: url("../img/backgrounds/background.png");
   --pf-v5-c-login--BackgroundColor: var(--quickstart-bg-color);
   --pf-v5-c-login--BackgroundImage: var(--quickstart-bg-image);
   --pf-v5-c-login--BackgroundPosition: center;
   --pf-v5-c-login--BackgroundSize: cover;
   --pf-v5-c-login--before--BackgroundColor: transparent;
-  --quickstart-border-radius: 0px;
-  --quickstart-card-shadow: none;
+  --quickstart-border-radius: 6px;
+  --quickstart-card-shadow: 0px 3px 6px 0 rgb(0 0 0 / 30%);
 }
 
-html.pf-v5-theme-dark,
-html.kcDarkModeClass {
-  --quickstart-primary-color: var(--quickstart-primary-color-dark);
-  --quickstart-secondary-color: var(--quickstart-secondary-color-dark);
-  --quickstart-bg-color: var(--quickstart-bg-color-dark);
-}
+/* Tema light forzato — ignora preferenza dark mode */
