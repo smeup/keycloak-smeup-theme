@@ -254,9 +254,11 @@
                         <span class="${properties.kcAlertTitleClass!} kc-feedback-text"><#if _hasInfo>${_infoMsg}</#if></span>
                     </div>
 
-                <#nested "form">
+                <#if pageId != "login">
+                  <#nested "form">
+                </#if>
 
-        <#if auth?has_content && auth.showTryAnotherWayLink()>
+        <#if pageId != "login" && auth?has_content && auth.showTryAnotherWayLink()>
           <form id="kc-select-try-another-way-form" action="${url.loginAction}" method="post" novalidate="novalidate">
               <input type="hidden" name="tryAnotherWay" value="on"/>
               <a id="try-another-way" href="javascript:document.forms['kc-select-try-another-way-form'].requestSubmit()"

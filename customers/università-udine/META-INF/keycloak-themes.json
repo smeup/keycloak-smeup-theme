@@ -3,7 +3,8 @@
     {
       "name": "mytheme",
       "types": [
-        "login"
+        "login",
+        "admin"
       ]
     }
   ]
