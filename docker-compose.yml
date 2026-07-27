@@ -14,5 +14,6 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./prod:/opt/keycloak/themes/smeup-prod:ro
-      - ./lab:/opt/keycloak/themes/smeup-lab:ro
+      - ./prod:/opt/keycloak/themes/prod:ro
+      - ./lab:/opt/keycloak/themes/lab:ro
+      - ./customers/università-udine:/opt/keycloak/themes/uni:ro
