@@ -29,3 +29,17 @@ Both variants include `login`, `account`, and `admin` theme parts.
 
 - Identity providers --> Google --> client ID & client Secret ( generic values )
 - Open on incognito page `localhost:8080/admin/`
+
+## PR packaging and version traceability
+
+On every Pull Request update, GitHub Actions runs `PR Theme Packaging` and:
+
+- creates `.tar` archives only when PR diffs touch `lab/` or `prod/`
+- creates one `.tar` per customer folder when PR diffs touch subfolders under `customers/` (for example `customers/acme/`)
+- assigns a version like `pr-<PR>.<RUN>-<SHORT_SHA>-<UTC_TIMESTAMP>`
+- uploads all files in the workflow artifact `theme-packages-<VERSION>`
+- includes a manifest file with version, PR, branch, commit and SHA256 checksums
+
+If no relevant diffs are found, the packaging step is skipped and no tar artifact is created.
+
+This provides a clear build trace only when packaging is actually needed.

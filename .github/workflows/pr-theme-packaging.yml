@@ -1,0 +1,152 @@
+name: PR Theme Packaging
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  package-theme:
+    name: Package theme folders as tar
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed package targets
+        id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+
+          declare -A DIRS_MAP=()
+
+          while IFS= read -r path; do
+            [[ -z "$path" ]] && continue
+
+            case "$path" in
+              customers/*/*)
+                customer_name="${path#customers/}"
+                customer_name="${customer_name%%/*}"
+                customer_dir="customers/${customer_name}"
+                if [[ -d "$customer_dir" ]]; then
+                  DIRS_MAP["$customer_dir"]=1
+                fi
+                ;;
+              */*)
+                top_level="${path%%/*}"
+                if [[ ( "$top_level" == "lab" || "$top_level" == "prod" ) && -d "$top_level" ]]; then
+                  DIRS_MAP["$top_level"]=1
+                fi
+                ;;
+            esac
+          done < <(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
+
+          if [[ ${#DIRS_MAP[@]} -eq 0 ]]; then
+            {
+              echo "has_targets=false"
+              echo "directories<<EOF"
+              echo ""
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          mapfile -t package_dirs < <(printf '%s\n' "${!DIRS_MAP[@]}" | sort)
+
+          {
+            echo "has_targets=true"
+            echo "directories<<EOF"
+            printf '%s\n' "${package_dirs[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build version metadata and tar archives
+        id: package
+        if: steps.detect.outputs.has_targets == 'true'
+        env:
+          DIRECTORIES: ${{ steps.detect.outputs.directories }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p dist
+
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          BRANCH_NAME="${{ github.head_ref }}"
+          SHORT_SHA="${GITHUB_SHA::7}"
+          BUILD_TS="$(date -u +%Y%m%d%H%M%S)"
+          VERSION="pr-${PR_NUMBER}.${GITHUB_RUN_NUMBER}-${SHORT_SHA}-${BUILD_TS}"
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+          MANIFEST="dist/manifest-${VERSION}.txt"
+          {
+            echo "version=${VERSION}"
+            echo "pr_number=${PR_NUMBER}"
+            echo "branch=${BRANCH_NAME}"
+            echo "commit=${GITHUB_SHA}"
+            echo "build_timestamp_utc=${BUILD_TS}"
+            echo ""
+            echo "packaged_directories:"
+            while IFS= read -r folder; do
+              [[ -z "$folder" ]] && continue
+              echo "- ${folder}"
+            done <<< "$DIRECTORIES"
+            echo ""
+            echo "archives:"
+          } > "$MANIFEST"
+
+          while IFS= read -r folder; do
+            [[ -z "$folder" ]] && continue
+            archive="${folder//\//-}-${VERSION}.tar"
+            tar -cf "dist/${archive}" "$folder"
+            checksum="$(sha256sum "dist/${archive}" | awk '{print $1}')"
+            printf -- "- %s source=%s sha256=%s\n" "$archive" "$folder" "$checksum" >> "$MANIFEST"
+          done <<< "$DIRECTORIES"
+
+      - name: Upload PR artifacts
+        if: steps.detect.outputs.has_targets == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: theme-packages-${{ steps.package.outputs.version }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Add run summary
+        if: always()
+        env:
+          HAS_TARGETS: ${{ steps.detect.outputs.has_targets }}
+          DIRECTORIES: ${{ steps.detect.outputs.directories }}
+          VERSION: ${{ steps.package.outputs.version }}
+        shell: bash
+        run: |
+          if [[ "$HAS_TARGETS" != "true" ]]; then
+            {
+              echo "## Theme packaging skipped"
+              echo ""
+              echo "No diffs found in lab/prod or in customers subfolders."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          {
+            echo "## Theme packaging completed"
+            echo ""
+            echo "- Version: \\`${VERSION}\\`"
+            echo "- Artifact: \\`theme-packages-${VERSION}\\`"
+            echo "- Included directories:"
+            while IFS= read -r folder; do
+              [[ -z "$folder" ]] && continue
+              echo "  - \\`${folder}\\`"
+            done <<< "$DIRECTORIES"
+          } >> "$GITHUB_STEP_SUMMARY"
