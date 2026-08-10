@@ -17,3 +17,4 @@ services:
       - ./prod:/opt/keycloak/themes/prod:ro
       - ./lab:/opt/keycloak/themes/lab:ro
       - ./customers/università-udine:/opt/keycloak/themes/uni:ro
+      - ./prod-v2:/opt/keycloak/themes/prod-v2:ro
