@@ -18,3 +18,4 @@ services:
       - ./lab:/opt/keycloak/themes/lab:ro
       - ./customers/università-udine:/opt/keycloak/themes/uni:ro
       - ./prod-v2:/opt/keycloak/themes/prod-v2:ro
+      - ./lab-v2:/opt/keycloak/themes/lab-v2:ro
