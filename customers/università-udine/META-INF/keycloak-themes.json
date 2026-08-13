@@ -1,10 +1,11 @@
 {
   "themes": [
     {
-      "name": "mytheme",
+      "name": "uni",
       "types": [
         "login",
-        "admin"
+        "admin",
+        "account"
       ]
     }
   ]

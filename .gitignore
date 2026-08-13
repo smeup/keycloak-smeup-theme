@@ -1,3 +1,5 @@
 *.tar
 *.tgz
 *.tar.gz
+
+dist/
