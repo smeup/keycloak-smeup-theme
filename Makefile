@@ -19,7 +19,7 @@ help:
 
 list:
 	@set -euo pipefail; \
-	mapfile -t themes < <({ find . -mindepth 1 -maxdepth 1 -type d -printf '%P\n' | while read -r folder; do \
+	mapfile -t themes < <({ find smeup -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \
 	done; find customers -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \
@@ -29,7 +29,7 @@ list:
 
 package:
 	@set -euo pipefail; \
-	mapfile -t themes < <({ find . -mindepth 1 -maxdepth 1 -type d -printf '%P\n' | while read -r folder; do \
+	mapfile -t themes < <({ find smeup -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \
 	done; find customers -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \

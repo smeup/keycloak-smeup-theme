@@ -12,17 +12,19 @@ docker compose up
 
 ## Theme variants
 
-The repository includes two theme variants:
+The repository includes four Smeup theme variants:
 
-- `lab/`: development and testing variant
-- `prod/`: production-ready variant
+- `smeup/lab/`: development and testing variant
+- `smeup/lab-v2/`: development and testing V2 variant
+- `smeup/prod/`: production-ready variant
+- `smeup/prod-v2/`: production-ready V2 variant
 
 Both variants include `login`, `account`, and `admin` theme parts.
 
 ## Change theme
 
 - Go to `localhost:8080/admin/` and use `admin` as username and password
-- Realm settings --> themes --> set 'smeup-lab' or 'smeup-prod' on themes voices
+- Realm settings --> themes --> set the desired theme (`lab`, `lab-v2`, `prod`, or `prod-v2`)
 - Refresh the page to see the new theme
 
 ## Show **Google** button in login page
@@ -32,14 +34,11 @@ Both variants include `login`, `account`, and `admin` theme parts.
 
 ## PR packaging and version traceability
 
-On every Pull Request update, GitHub Actions runs `PR Theme Packaging` and:
+Theme packaging can be run locally with `make package` and:
 
-- creates `.tar` archives only when PR diffs touch `lab/` or `prod/`
-- creates one `.tar` per customer folder when PR diffs touch subfolders under `customers/` (for example `customers/acme/`)
-- assigns a version like `pr-<PR>.<RUN>-<SHORT_SHA>-<UTC_TIMESTAMP>`
-- uploads all files in the workflow artifact `theme-packages-<VERSION>`
-- includes a manifest file with version, PR, branch, commit and SHA256 checksums
+- lists themes under `smeup/` and customer themes under `customers/`
+- accepts either the displayed number or the full theme path
+- creates a `.tar` archive with the selected theme directory at its root
+- prints the SFTP and SSH extraction commands for VM deployment
 
-If no relevant diffs are found, the packaging step is skipped and no tar artifact is created.
-
-This provides a clear build trace only when packaging is actually needed.
+Use `make list` to inspect the available themes and `make clean` to remove generated archives.
