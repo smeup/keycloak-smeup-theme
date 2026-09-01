@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --keycloak-card-top-color: var(--pf-v5-global--palette--blue-400);
+}
+
+.pf-v5-c-login__container {
+    grid-template-columns: 34rem;
+    grid-template-areas: "header"
+                         "main"
+}
+
+.pf-v5-c-login__main-header {
+    border-top: 4px solid var(--quickstart-primary-color, var(--keycloak-card-top-color));
+}
+
+/* Info section - top margin + bottom padding */
+.pf-v5-c-login__main-footer-band:first-child {
+    margin-block-start: var(--pf-v5-global--spacer--lg);
+}
+
+.pf-v5-c-login__main-footer-band:last-child {
+    padding-bottom: 0;
+}
+
+/* Legal links spacing - no gap */
+#kc-info.pf-v5-c-login__main-footer-band {
+    gap: 0;
+    row-gap: 0;
+}
+
+#kc-info a.pf-v5-c-login__main-footer-band-item {
+    margin: 0;
+    padding: 0;
+}
+
+.login-pf body {
+  background: none;
+  height: 100%;
+}
+
+div.kc-logo-text {
+  display: none;
+}
+
+.kc-login-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.kc-login-tooltip .kc-tooltip-text{
+    top:-3px;
+    left:160%;
+    background-color: black;
+    visibility: hidden;
+    color: #fff;
+
+    min-width:130px;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow:0 1px 8px rgba(0,0,0,0.6);
+    padding: 5px;
+
+    position: absolute;
+    opacity:0;
+    transition:opacity 0.5s;
+}
+
+/* Show tooltip */
+.kc-login-tooltip:hover .kc-tooltip-text {
+    visibility: visible;
+    opacity:0.7;
+}
+
+/* Arrow for tooltip */
+.kc-login-tooltip .kc-tooltip-text::after {
+    content: " ";
+    position: absolute;
+    top: 15px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+#kc-recovery-codes-list {
+    columns: 2;
+}
+
+#certificate_subjectDN {
+    overflow-wrap: break-word
+}
+
+#kc-verify-email-form {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+#kc-header-wrapper {
+    font-size: 29px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.2em;
+    white-space: normal;
+    color: var(--pf-v5-global--Color--light-100);
+    text-align: center;
+}
+
+  #kc-page-title {
+    font-size: 26px;
+    white-space: nowrap;
+  }
+
+#kc-code pre code {
+    word-break: break-all;
+}
+
+hr {
+    margin-top: var(--pf-v5-global--spacer--sm);
+    margin-bottom: var(--pf-v5-global--spacer--md);
+}
+
+/* Keycloak 26 wraps the whole label in a span named after the provider (e.g. kcLogoIdP-google); no <svg>/<i> is rendered. */
+#kc-social-providers a[id^="social-"] > span[class^="kcLogoIdP-"] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#kc-social-providers a[id^="social-"] > span[class^="kcLogoIdP-"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.1rem;
+  height: 1.1rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+#kc-social-providers .kcLogoIdP-google::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234285F4' d='M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z'/%3E%3Cpath fill='%2334A853' d='M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z'/%3E%3Cpath fill='%23FBBC05' d='M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88z'/%3E%3Cpath fill='%23EA4335' d='M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z'/%3E%3C/svg%3E");
+}
+
+#kc-social-providers .kcLogoIdP-github::before {
+  background-color: #181717;
+  -webkit-mask-size: 112% 112%;
+  mask-size: 112% 112%;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28'%3E%3Cpath fill='black' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 28 28'%3E%3Cpath fill='black' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+}
+
+body.pf-v5-theme-dark #kc-social-providers .kcLogoIdP-github::before {
+  background-color: #f0f6fc;
+}
+
+#kc-social-providers .kcLogoIdP-facebook::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%231877F2'/%3E%3Cpath fill='%23fff' d='M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.7V5a23 23 0 0 0-2.5-.1c-2.5 0-4.3 1.5-4.3 4.4V11H7v3h2.8v8h3.7z'/%3E%3C/svg%3E");
+}
+
+#kc-social-providers .kcLogoIdP-microsoft::before {
+  background-color: #00A4EF;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M2 3h9v9H2zm11 0h9v9h-9zM2 14h9v9H2zm11 0h9v9h-9z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M2 3h9v9H2zm11 0h9v9h-9zM2 14h9v9H2zm11 0h9v9h-9z'/%3E%3C/svg%3E");
+}
+
+#kc-social-providers .kcLogoIdP-gitlab::before {
+  background-color: #FC6D26;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 22l4.4-13.6h-8.8L12 22zm-9-9.8l4.7-3.7-2-5.9-2.7 9.6zm15.3-3.7l4.7 3.7-2.7-9.6-2 5.9zM7.7 8.5h8.6l-2.6-7.7h-3.4z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 22l4.4-13.6h-8.8L12 22zm-9-9.8l4.7-3.7-2-5.9-2.7 9.6zm15.3-3.7l4.7 3.7-2.7-9.6-2 5.9zM7.7 8.5h8.6l-2.6-7.7h-3.4z'/%3E%3C/svg%3E");
+}
+
+#kc-social-providers .kcLogoIdP-linkedin::before {
+  background-color: #0A66C2;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M6.5 9H3.3v11h3.2V9zm.2-3.4A1.9 1.9 0 1 0 2.8 5.6a1.9 1.9 0 0 0 3.9 0zM20.7 20v-6c0-3.2-1.7-4.7-4-4.7-1.8 0-2.6 1-3.1 1.8V9h-3.2v11h3.2v-6.2c0-1.6.3-3.1 2.3-3.1s2 1.9 2 3.2V20h2.8z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M6.5 9H3.3v11h3.2V9zm.2-3.4A1.9 1.9 0 1 0 2.8 5.6a1.9 1.9 0 0 0 3.9 0zM20.7 20v-6c0-3.2-1.7-4.7-4-4.7-1.8 0-2.6 1-3.1 1.8V9h-3.2v11h3.2v-6.2c0-1.6.3-3.1 2.3-3.1s2 1.9 2 3.2V20h2.8z'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 768px) {
+    div.pf-v5-c-login__main-header {
+        grid-template-columns: 70% 30%;
+    }
+}
+
+/* Quick Start variable hooks */
+#kc-header-wrapper {
+  color: var(--quickstart-text-primary-dark);
+}
+
+.kc-horizontal-card-subtitle,
+.kc-horizontal-card-client-name,
+.kc-horizontal-card-realm-name {
+  color: var(--quickstart-secondary-color);
+}
+
+/* Keep register CTA visible across Keycloak markup variants */
+#kc-registration > span[data-kc-i18n-key="noAccount"] {
+  display: inline;
+  font-size: 0;
+}
+
+#kc-registration > span[data-kc-i18n-key="noAccount"] > a,
+#kc-registration > span > a,
+#kc-registration-container #kc-registration > a {
+  font-size: 14px;
+  color: var(--quickstart-primary-color);
+}
+
+/* Primary button - Keycloak theme class */
+.kcButtonPrimaryClass:not(:disabled):not([aria-disabled="true"]),
+button.kcButtonPrimaryClass:not(:disabled):not([aria-disabled="true"]),
+a.kcButtonPrimaryClass:not([aria-disabled="true"]),
+button[type="submit"]:not(:disabled):not([aria-disabled="true"]),
+input[type="submit"]:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--quickstart-primary-color);
+}
+
+/* Primary button - PatternFly class */
+.pf-v5-c-button.pf-m-primary:not(:disabled):not(.pf-m-disabled):not([aria-disabled="true"]) {
+  --pf-v5-c-button--m-primary--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-primary--hover--BackgroundColor: var(--quickstart-primary-color);
+  background-color: var(--quickstart-primary-color);
+}
+
+/* Primary button hover/focus */
+.kcButtonPrimaryClass:not(:disabled):not([aria-disabled="true"]):hover,
+.kcButtonPrimaryClass:not(:disabled):not([aria-disabled="true"]):focus,
+button[type="submit"]:not(:disabled):not([aria-disabled="true"]):hover,
+button[type="submit"]:not(:disabled):not([aria-disabled="true"]):focus,
+.pf-v5-c-button.pf-m-primary:not(:disabled):not(.pf-m-disabled):not([aria-disabled="true"]):hover,
+.pf-v5-c-button.pf-m-primary:not(:disabled):not(.pf-m-disabled):not([aria-disabled="true"]):focus {
+  filter: brightness(0.9);
+}
+
+/* Input fields - focus bottom border (Keycloak V2 style) */
+.pf-v5-c-form-control:focus,
+input.pf-v5-c-form-control:focus,
+.kcInputClass input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-bottom-color: var(--quickstart-primary-color);
+}
+
+/* PatternFly form control focus - CSS variables */
+.pf-v5-c-form-control:focus::after {
+  --pf-v5-c-form-control--after--BorderBottomColor: var(--quickstart-primary-color);
+}
+
+/* Secondary button - Keycloak theme class */
+.kcButtonSecondaryClass,
+a.kcButtonSecondaryClass,
+button.kcButtonSecondaryClass,
+.kcButtonSecondaryClass.kcButtonSecondaryClass {
+  border-color: var(--quickstart-primary-color);
+  color: var(--quickstart-primary-color);
+}
+
+/* Secondary button - PatternFly class */
+.pf-v5-c-button.pf-m-secondary {
+  --pf-v5-c-button--m-secondary--Color: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--after--BorderColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--hover--Color: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--hover--after--BorderColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--focus--Color: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--focus--after--BorderColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--active--Color: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--active--after--BorderColor: var(--quickstart-primary-color);
+  color: var(--quickstart-primary-color);
+}
+
+/* Link-style buttons */
+.kcButtonLinkClass,
+a.kcButtonLinkClass,
+button.kcButtonLinkClass,
+.pf-v5-c-button.pf-m-link {
+  color: var(--quickstart-primary-color);
+}
+
+/* Recovery code action buttons (hover state) */
+#printRecoveryCodes:hover,
+#downloadRecoveryCodes:hover,
+#copyRecoveryCodes:hover {
+  color: var(--quickstart-secondary-color);
+}
+
+/* Checkboxes */
+.kcCheckboxInputClass,
+input[type="checkbox"].kcCheckboxInputClass,
+.kcCheckboxClass input[type="checkbox"],
+input[type="checkbox"] {
+  accent-color: var(--quickstart-secondary-color);
+}
+
+/* Links */
+a {
+  color: var(--quickstart-primary-color);
+}
+
+/* V2 links should use quickstart primary color */
+.pf-v5-c-login a,
+#kc-info a.pf-v5-c-login__main-footer-band-item,
+.pf-v5-c-login .kc-footer-legal-links a {
+  color: var(--quickstart-primary-color);
+}
+
+.pf-v5-c-login a:hover,
+#kc-info a.pf-v5-c-login__main-footer-band-item:hover,
+.pf-v5-c-login .kc-footer-legal-links a:hover {
+  color: var(--quickstart-primary-color);
+  filter: brightness(0.9);
+}
+
+/* Legal links layout */
+#kc-info.pf-v5-c-login__main-footer-band,
+.pf-v5-c-login .kc-footer-legal-links {
+  gap: 0;
+  row-gap: 0;
+}
+
+.pf-v5-c-login .kc-footer-legal-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.pf-v5-c-login .kc-legal-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 0;
+  padding-top: 0;
+}
+
+#kc-info a.pf-v5-c-login__main-footer-band-item,
+.pf-v5-c-login .kc-footer-legal-links a {
+  display: block;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+#kc-info a.pf-v5-c-login__main-footer-band-item:hover,
+.pf-v5-c-login .kc-footer-legal-links a:hover {
+  text-decoration: underline;
+}
+
+/* Input focus color (for non-PatternFly presets) */
+.kcInputClass input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--quickstart-primary-color);
+}
+
+/* Checkbox accent */
+.kcCheckboxInputClass,
+input[type="checkbox"] {
+  accent-color: var(--quickstart-primary-color);
+}
+
+
+/* Quick Start optional variable hooks */
+body {
+  font-family: var(--quickstart-font-family, var(--pf-v5-global--FontFamily--text, var(--pf-v5-global--FontFamily--sans-serif, inherit)));
+}
+
+#kc-page-title,
+#kc-header-wrapper,
+#kc-realm-name,
+#kc-client-name,
+.kcLoginMainTitle {
+  font-family: var(--quickstart-heading-font-family, var(--pf-v5-global--FontFamily--heading, var(--pf-v5-global--FontFamily--text, var(--pf-v5-global--FontFamily--sans-serif, inherit))));
+}
+
+body#keycloak-bg,
+body#keycloak-bg .kcLogin,
+body#keycloak-bg .pf-v5-c-login {
+  background-color: var(--quickstart-bg-color, transparent);
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.pf-v5-c-button,
+.pf-v5-c-button.pf-m-primary,
+.pf-v5-c-button.pf-m-secondary {
+  --pf-v5-c-button--BorderRadius: var(--quickstart-border-radius);
+  --pf-v5-c-button--after--BorderRadius: var(--quickstart-border-radius);
+}
+
+.pf-v5-c-form-control,
+.pf-v5-c-button,
+.kcFormSocialAccountListButtonClass,
+.pf-v5-c-panel__main-body,
+.pf-v5-c-login__main,
+.kcFormCardClass {
+  border-radius: var(--quickstart-border-radius) !important;
+}
+
+input.kcInputClass,
+.kcInputClass input,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border-radius: var(--quickstart-border-radius) !important;
+}
+
+.pf-v5-c-form-control::before,
+.pf-v5-c-form-control::after,
+.kcInputClass::before,
+.kcInputClass::after {
+  border-radius: var(--quickstart-border-radius) !important;
+}
+
+#kc-registration-container a,
+#authenticateWebAuthnButton.kcButtonSecondaryClass {
+  border-radius: var(--quickstart-border-radius);
+}
+
+.kcInputGroup .pf-v5-c-button.pf-m-control {
+  --pf-v5-c-button--m-control--BorderRadius: 0;
+  --pf-v5-c-button--BorderRadius: 0;
+}
+
+.kcInputGroup .pf-v5-c-form-control,
+.kcInputGroup .pf-v5-c-form-control::before,
+.kcInputGroup .pf-v5-c-form-control::after,
+.kcInputGroup input.kcInputClass,
+.kcInputGroup .kcInputClass input,
+.kcInputGroup .kcInputGroupItemClass.kcFill > input,
+.kcInputGroup .kcInputGroupItemClass.kcFill > .kcInputClass,
+.kcInputGroup .kcInputGroupItemClass.kcFill > .kcInputClass input {
+  border-top-left-radius: var(--quickstart-border-radius) !important;
+  border-bottom-left-radius: var(--quickstart-border-radius) !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right-width: 0;
+  border-inline-end-width: 0;
+}
+
+.kcInputGroup .pf-v5-c-form-control:focus,
+.kcInputGroup .pf-v5-c-form-control[aria-invalid="true"],
+.kcInputGroup input.kcInputClass:focus,
+.kcInputGroup input.kcInputClass[aria-invalid="true"],
+.kcInputGroup .kcInputClass input:focus,
+.kcInputGroup .kcInputClass input[aria-invalid="true"],
+.kcInputGroup .kcInputGroupItemClass.kcFill > input:focus,
+.kcInputGroup .kcInputGroupItemClass.kcFill > input[aria-invalid="true"],
+.kcInputGroup .kcInputGroupItemClass.kcFill > .kcInputClass input:focus,
+.kcInputGroup .kcInputGroupItemClass.kcFill > .kcInputClass input[aria-invalid="true"] {
+  box-shadow: none;
+}
+
+.kcInputGroup .kcFormPasswordVisibilityButtonClass {
+  --pf-v5-c-button--m-control--BorderRadius: var(--quickstart-border-radius) !important;
+  --pf-v5-c-button--BorderRadius: var(--quickstart-border-radius) !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: var(--quickstart-border-radius) !important;
+  border-bottom-right-radius: var(--quickstart-border-radius) !important;
+}
+
+.kcInputGroup .kcFormPasswordVisibilityButtonClass::before,
+.kcInputGroup .kcFormPasswordVisibilityButtonClass::after {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: var(--quickstart-border-radius) !important;
+  border-bottom-right-radius: var(--quickstart-border-radius) !important;
+}
+
+.kcLoginMain,
+.pf-v5-c-login__main,
+.kcFormCardClass {
+  box-shadow: var(--quickstart-card-shadow);
+}
+
+
+/* @kte:visibility-start:hide-realm-name */
+/* Hide realm name */
+#kc-realm-name,
+.kc-realm-name,
+.kc-horizontal-card-realm-name {
+  display: none !important;
+}
+/* @kte:visibility-end */
+
+/* @kte:visibility-start:hide-client-name */
+/* Hide client name */
+#kc-client-name,
+.kc-client-name,
+.kc-horizontal-card-client-name,
+[data-kc-client="name"] {
+  display: none !important;
+}
+/* @kte:visibility-end */
+
+/* @kte:visibility-start:hide-subtitle */
+/* Hide subtitle row when both client and realm are disabled */
+.kc-horizontal-card-subtitle {
+  display: none !important;
+}
+/* @kte:visibility-end */
+
+/* @kte:visibility-start:hide-info-message */
+/* Hide info message */
+#kc-info-message.kcAlertClass,
+.kc-info-message,
+[data-kc-i18n-key="infoMessage"] {
+  display: none !important;
+}
+/* @kte:visibility-end */
+
+/* @kte:visibility-start:hide-client-container */
+/* Hide client container */
+#kc-client,
+.kc-client {
+  display: none !important;
+}
+/* @kte:visibility-end */
+
+/* ============================================================
+   Nascondi form credenziali — mostra solo bottoni IDP
+   ============================================================ */
+#kc-form-login,
+#kc-select-try-another-way-form,
+#kc-registration,
+#kc-registration-container {
+  display: none !important;
+}
+
+.pf-v5-c-login__main-footer-band {
+  display: none !important;
+}
+
+#kc-social-providers {
+  margin-top: 24px;
+}
+
+:root {
+  --quickstart-logo-url: url("../img/logos/logo.png");
+  --kc-applied-logo-url: url("../img/logos/logo.png");
+}
+
+.kc-logo-text {
+  background-image: url("../img/logos/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#kc-header-wrapper::before {
+  content: "";
+  display: block;
+  background-image: url("../img/logos/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: var(--quickstart-logo-height, 66px);
+  width: var(--quickstart-logo-width, 320px);
+  max-width: 100%;
+  margin: 0 auto;
+}

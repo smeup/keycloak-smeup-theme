@@ -21,7 +21,7 @@ list:
 	@set -euo pipefail; \
 	mapfile -t themes < <({ find smeup -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \
-	done; find customers -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
+	done; find customers -mindepth 2 -maxdepth 2 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \
 	done; } | sort); \
 	if (( $${#themes[@]} == 0 )); then echo 'Nessun tema trovato.'; exit 1; fi; \
@@ -31,7 +31,7 @@ package:
 	@set -euo pipefail; \
 	mapfile -t themes < <({ find smeup -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \
-	done; find customers -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
+	done; find customers -mindepth 2 -maxdepth 2 -type d -printf '%p\n' 2>/dev/null | while read -r folder; do \
 		if [[ -f "$$folder/login/theme.properties" ]]; then printf '%s\n' "$$folder"; fi; \
 	done; } | sort); \
 	if (( $${#themes[@]} == 0 )); then echo 'Nessun tema trovato.'; exit 1; fi; \

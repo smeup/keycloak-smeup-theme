@@ -1,0 +1,63 @@
+:root {
+  --quickstart-primary-color-light: #0000fe;
+  --quickstart-primary-color-dark: #0000fe;
+  --quickstart-primary-color: var(--quickstart-primary-color-light);
+  --quickstart-secondary-color-light: #193f88;
+  --quickstart-secondary-color-dark: #193f88;
+  --quickstart-secondary-color: var(--quickstart-secondary-color-light);
+  --quickstart-font-family: inherit;
+  --quickstart-heading-font-family: inherit;
+  --quickstart-logo-url: url("../img/logos/logo.png");
+  --quickstart-bg-logo-url: none;
+  --quickstart-logo-height: 80px;
+  --quickstart-logo-width: 320px;
+  --quickstart-text-primary-light: var(--pf-v5-global--Color--dark-100, #151515);
+  --quickstart-text-primary-dark: var(--pf-v5-global--Color--light-100, #f0f0f0);
+  --quickstart-text-secondary-light: var(--pf-v5-global--Color--dark-200, #4f5255);
+  --quickstart-text-secondary-dark: var(--pf-v5-global--Color--light-200, #d2d2d2);
+  --quickstart-bg-color-light: transparent;
+  --quickstart-bg-color-dark: transparent;
+  --quickstart-bg-color: var(--quickstart-bg-color-light);
+  --quickstart-bg-image: none;
+  --quickstart-border-radius: 0px;
+  --quickstart-card-shadow: none;
+}
+
+html.pf-v5-theme-dark,
+html.kcDarkModeClass {
+  --quickstart-primary-color: var(--quickstart-primary-color-dark);
+  --quickstart-secondary-color: var(--quickstart-secondary-color-dark);
+  --quickstart-bg-color: var(--quickstart-bg-color-dark);
+}
+
+:root,
+html:not(.kcDarkModeClass) body:not(.kcDarkModeClass),
+html:not(.kcDarkModeClass) body#keycloak-bg:not(.kcDarkModeClass) {
+  --quickstart-primary-color: #0000fe;
+  --quickstart-secondary-color: #193f88;
+  --quickstart-font-family: 'Montserrat', sans-serif;
+  --quickstart-heading-font-family: 'Montserrat', sans-serif;
+  --quickstart-gradient-bg-default: linear-gradient(135deg, #0000fe 0%, #193f88 100%);
+  --quickstart-bg-color: #fefefe;
+  --quickstart-bg-image: none;
+  --quickstart-bg-logo-url: none;
+  --quickstart-border-radius: 8px;
+  --quickstart-card-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+html.kcDarkModeClass,
+html.kcDarkModeClass body,
+html.kcDarkModeClass body#keycloak-bg,
+body.kcDarkModeClass,
+body#keycloak-bg.kcDarkModeClass {
+  --quickstart-primary-color: #0000fe;
+  --quickstart-secondary-color: #193f88;
+  --quickstart-font-family: 'Montserrat', sans-serif;
+  --quickstart-heading-font-family: 'Montserrat', sans-serif;
+  --quickstart-gradient-bg-default: linear-gradient(135deg, #0000fe 0%, #193f88 100%);
+  --quickstart-bg-color: #fefefe;
+  --quickstart-bg-image: none;
+  --quickstart-bg-logo-url: none;
+  --quickstart-border-radius: 8px;
+  --quickstart-card-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}

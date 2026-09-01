@@ -1,0 +1,13 @@
+:root {
+  --quickstart-primary-color-light: #0000fe;
+  --quickstart-primary-color-dark: #0000fe;
+  --quickstart-primary-color: var(--quickstart-primary-color-light);
+  --quickstart-secondary-color-light: #0000fe;
+  --quickstart-secondary-color-dark: #0000fe;
+  --quickstart-secondary-color: var(--quickstart-secondary-color-light);
+  --quickstart-logo-url: url("../public/logo.png");
+  --quickstart-border-radius: 8px;
+  --quickstart-card-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* Light theme forced — ignore dark mode preference */

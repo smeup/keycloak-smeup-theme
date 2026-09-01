@@ -1,0 +1,12 @@
+{
+  "themes": [
+    {
+      "name": "uni-social",
+      "types": [
+        "login",
+        "admin",
+        "account"
+      ]
+    }
+  ]
+}
