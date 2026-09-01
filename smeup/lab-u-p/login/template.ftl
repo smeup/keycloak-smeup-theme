@@ -97,7 +97,32 @@
         </#outputformat>
     </script>
     <script type="module">
+        const PASSWORD_RECOVERY_URL = "https://password.smeup.com";
+
+        function wireForgotPasswordLink() {
+            const forgotPasswordLinks = document.querySelectorAll(
+                'a[href*="login-actions/reset-credentials"], a[href*="reset-credentials"]'
+            );
+
+            forgotPasswordLinks.forEach((link) => {
+                link.setAttribute("href", PASSWORD_RECOVERY_URL);
+                link.removeAttribute("data-once-link");
+            });
+        }
+
+        wireForgotPasswordLink();
+        document.addEventListener("DOMContentLoaded", wireForgotPasswordLink, { once: true });
+
         document.addEventListener("click", (event) => {
+            const forgotPasswordLink = event.target.closest(
+                'a[href*="login-actions/reset-credentials"], a[href*="reset-credentials"]'
+            );
+            if (forgotPasswordLink) {
+                event.preventDefault();
+                window.location.assign(PASSWORD_RECOVERY_URL);
+                return;
+            }
+
             const link = event.target.closest("a[data-once-link]");
 
             if (!link) {
