@@ -16,6 +16,7 @@ services:
     volumes:
       - ./smeup/prod:/opt/keycloak/themes/prod:ro
       - ./smeup/staging:/opt/keycloak/themes/staging:ro
+      - ./smeup/staging-u-p:/opt/keycloak/themes/staging-u-p:ro
       - ./smeup/lab:/opt/keycloak/themes/lab:ro
       - ./smeup/lab-u-p:/opt/keycloak/themes/lab-u-p:ro
       - ./customers/università-udine/usr-psw-box:/opt/keycloak/themes/uni-u-p:ro
