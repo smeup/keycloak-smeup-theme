@@ -1,0 +1,104 @@
+/* ============================================================
+   Bottoni — stessa API PF5 usata nel tema di login
+   ============================================================ */
+.pf-v5-c-button.pf-m-primary {
+  --pf-v5-c-button--m-primary--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-primary--hover--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-primary--focus--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-primary--active--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--BorderRadius: var(--quickstart-border-radius);
+}
+
+.pf-v5-c-button.pf-m-primary:not(:disabled):hover,
+.pf-v5-c-button.pf-m-primary:not(:disabled):focus {
+  filter: brightness(0.9);
+}
+
+/* Pulsanti con menu a tendina (split button) */
+.pf-v5-c-menu-toggle.pf-m-primary {
+  --pf-v5-c-menu-toggle--m-primary--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--m-primary--hover--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--m-primary--focus--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--m-primary--active--BackgroundColor: var(--quickstart-primary-color);
+  --pf-v5-c-menu-toggle--BorderRadius: var(--quickstart-border-radius);
+}
+
+.pf-v5-c-menu-toggle.pf-m-primary:not(:disabled):hover,
+.pf-v5-c-menu-toggle.pf-m-primary:not(:disabled):focus {
+  filter: brightness(0.9);
+}
+
+.pf-v5-c-button.pf-m-secondary {
+  --pf-v5-c-button--m-secondary--Color: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--after--BorderColor: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--hover--Color: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-secondary--hover--after--BorderColor: var(--quickstart-primary-color);
+}
+
+.pf-v5-c-button.pf-m-link {
+  --pf-v5-c-button--m-link--Color: var(--quickstart-primary-color);
+  --pf-v5-c-button--m-link--hover--Color: var(--quickstart-primary-color);
+}
+
+/* ============================================================
+   Input / focus — coerente col login (bordo, niente outline)
+   ============================================================ */
+.pf-v5-c-form-control:hover {
+  --pf-v5-c-form-control--after--BorderBottomColor: var(--quickstart-primary-color);
+}
+
+.pf-v5-c-form-control:focus-within,
+.pf-v5-c-form-control:focus {
+  --pf-v5-c-form-control--after--BorderBottomColor: var(--quickstart-primary-color);
+  outline: none;
+  box-shadow: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--quickstart-primary-color);
+}
+
+/* ============================================================
+   Card / superfici — radius e shadow coerenti col login
+   ============================================================ */
+.pf-v5-c-card,
+.pf-v5-c-panel__main-body {
+  border-radius: var(--quickstart-border-radius);
+  box-shadow: var(--quickstart-card-shadow);
+}
+
+/* ============================================================
+   Link generici
+   ============================================================ */
+a {
+  color: var(--quickstart-primary-color);
+}
+
+a:hover {
+  filter: brightness(0.9);
+}
+
+/* ============================================================
+   Logo/brand nell'header — se in futuro serve un tweak di size
+   la property "logo" in theme.properties gestisce gia' l'immagine,
+   qui regoliamo solo le dimensioni se necessario.
+   ============================================================ */
+.pf-v5-c-brand img,
+.pf-v5-c-masthead__brand img {
+  max-height: 40px;
+  width: auto;
+}
+
+/* ============================================================
+   Fallback logo via CSS (bug keycloak/keycloak#45733: la property
+   "logo" di theme.properties a volte non viene renderizzata nella
+   Admin Console su alcune versioni 26.x). Scommenta se il logo non
+   appare nonostante logo=/public/logo.png in theme.properties.
+   ============================================================ */
+/*
+.pf-v5-c-masthead__brand img,
+.pf-v5-c-brand img {
+  content: url("../public/logo.png");
+}
+*/
