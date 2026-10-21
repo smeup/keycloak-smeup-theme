@@ -1073,7 +1073,8 @@ body#keycloak-bg.kcDarkModeClass .kcFormGroupClass :is(.kcInputErrorMessageClass
 }
 
 /* Icons below use fixed brand colors; any native provider icon is hidden to avoid duplicates/inconsistent tinting. */
-#kc-social-providers .kcFormSocialAccountListButtonClass svg, #kc-social-providers a.kcFormSocialAccountListButtonClass svg{
+#kc-social-providers .kcFormSocialAccountListButtonClass svg, #kc-social-providers a.kcFormSocialAccountListButtonClass svg,
+#kc-social-providers .kcFormSocialAccountListButtonClass img, #kc-social-providers a.kcFormSocialAccountListButtonClass img{
   display: none;
 }
 

@@ -235,8 +235,11 @@ div.kc-logo-text span {
   filter: invert(27%) sepia(62%) saturate(1730%) hue-rotate(210deg) brightness(92%) contrast(94%);
 }
 
-#kc-social-providers svg {
+#kc-social-providers svg,
+#kc-social-providers img {
   height: var(--pf-v5-global--FontSize--xl);
+  width: auto;
+  flex: 0 0 auto;
 }
 
 /* Dark mode disabled — light theme forced */

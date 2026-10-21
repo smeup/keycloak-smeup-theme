@@ -182,7 +182,6 @@
           </#if>
         </div>
 </header>
-      <div class="staging-environment-label">AMBIENTE DI STAGING</div>
     <main class="${properties.kcLoginMain!}">
 
       <div class="${properties.kcLoginMainHeader!}">

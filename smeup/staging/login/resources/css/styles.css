@@ -138,22 +138,11 @@ input[type="checkbox"] {
    ============================================================ */
 .pf-v5-c-login__container {
   grid-template-columns: 34rem;
-  grid-template-areas: "header" "staging-label" "main";
+  grid-template-areas: "header" "main";
 }
 
 .pf-v5-c-login__main-header {
   border-top: 4px solid var(--quickstart-primary-color);
-}
-
-.staging-environment-label {
-  grid-area: staging-label;
-  margin: 0 auto;
-  transform: translateY(-30px);
-  color: var(--quickstart-primary-color);
-  font-family: var(--quickstart-font-family);
-  font-size: 16px;
-  font-weight: 700;
-  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -246,8 +235,11 @@ div.kc-logo-text span {
   filter: invert(27%) sepia(62%) saturate(1730%) hue-rotate(210deg) brightness(92%) contrast(94%);
 }
 
-#kc-social-providers svg {
+#kc-social-providers svg,
+#kc-social-providers img {
   height: var(--pf-v5-global--FontSize--xl);
+  width: auto;
+  flex: 0 0 auto;
 }
 
 /* Dark mode disabled — light theme forced */
@@ -365,6 +357,27 @@ body#keycloak-bg .pf-v5-c-login {
   background-image: none;
 }
 
+body#keycloak-bg {
+  isolation: isolate;
+}
+
+body#keycloak-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='110'%3E%3Ctext x='8' y='67' transform='rotate(-25 8 67)' fill='%23be0000' fill-opacity='0.14' font-family='sans-serif' font-size='22' font-weight='700'%3ESTAGING%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+body#keycloak-bg .kcLogin,
+body#keycloak-bg .pf-v5-c-login {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
 .pf-v5-c-button,
 .pf-v5-c-button.pf-m-primary,
 .pf-v5-c-button.pf-m-secondary {
@@ -406,6 +419,10 @@ body#keycloak-bg .pf-v5-c-login {
 }
 
 .pf-v5-c-login__main-footer-band {
+  display: none !important;
+}
+
+.kc-login-divider {
   display: none !important;
 }
 
